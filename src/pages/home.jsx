@@ -11,7 +11,7 @@ export function Home() {
   // Set "Home" as the default active tab on page load
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedProject, setSelectedProject] = useState(null);
-  const [allProject, setAllProject] = useState(true)
+  const [allProject, setAllProject] = useState(false)
 
   return (
     <div className="hero min-h-screen text-white relative  overflow-x-hidden">
