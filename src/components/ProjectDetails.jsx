@@ -8,7 +8,7 @@ const ProjectDetails = ({ project, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-white/10">
           <div>
-            <h2 className="text-xl md:text-3xl font-bold text-white">
+            <h2 className="text-md md:text-3xl font-bold text-white">
              {project.title}
             </h2>
             <p className="text-slate-400 mt-1">
