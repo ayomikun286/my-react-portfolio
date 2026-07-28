@@ -75,7 +75,7 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
                             </div>
                         </div>
 
-                        <div className='flex items-center space-x-5 mt-10'>
+                        <div className='flex items-center flex-wrap space-x-5 mt-10'>
                             <button
                                 onClick={() => onOpenProject('Projects')}
                                 className="px-8 py-3  md:bg-transparent bg-[#030B1E]  text-white border  font-black tracking-wide uppercase transition-all duration-300 hover:bg-[#030B1E] hover:text-white"
