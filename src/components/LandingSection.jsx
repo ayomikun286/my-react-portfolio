@@ -12,7 +12,7 @@ export default function HeroSection({ onOpenProject }) {
         </span>
 
         {/* 2. Your Full Legal Name */}
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-5">
+        <h1 className="text-3xl md:text-6xl font-black tracking-tight text-white mb-5">
           Edegbai Ayomikun <br className="hidden md:block" /> Oluwaseun.
         </h1>
 
