@@ -1,0 +1,24 @@
+.hero{
+    background-image: url('/Group 88.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+.navlink p{
+    background-image: url('/Vector.png');
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    width: 150px;
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+}

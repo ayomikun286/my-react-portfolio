@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* 1. Define how the animation behaves over time */
+@keyframes fadeIn {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; scale: 0.95; }
+  to { opacity: 1; scale: 1; }
+}
+
+/* 2. Create the utility class for Tailwind v4 */
+@theme {
+  --animate-fadeIn: fadeIn 0.4s ease-out forwards;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+body{
+  margin: 0%;
+  padding: 0%;
+}
