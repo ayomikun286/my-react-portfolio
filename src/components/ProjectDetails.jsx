@@ -3,7 +3,7 @@ import React from 'react'
 const ProjectDetails = ({ project, onClose }) => {
   return (
     <div className='fixed flex justify-center items-center bg-black/50 inset-0 w-screen h-screen top-0 left-0 p-4 z-50'>
-      <div className="w-full max-w-5xl h-[90vh] bg-[#0F172A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+      <div className="w-full max-w-5xl h-[90vh] bg-[#0F172A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden pb-10">
 
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-6 border-b border-white/10">
@@ -64,7 +64,7 @@ const ProjectDetails = ({ project, onClose }) => {
               Key Features
             </h3>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
               {project.features.map((feature)=>(
                 <div key={feature} className="bg-slate-800 flex items-center gap-2 rounded-xl p-4">
