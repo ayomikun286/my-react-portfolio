@@ -1,11 +1,11 @@
 import React from 'react'
 import "./home.css";
-import SplashNavLink from "../componets/Navlink.jsx"
+import SplashNavLink from "../components/Navlink.jsx"
 import { useState } from 'react';
-import HeroSection from "../componets/LandingSection.jsx"
-import About from "../componets/About.jsx"
-import Projects from "../componets/Projects.jsx"
-import ProjectDetails from "../componets/ProjectDetails.jsx"
+import HeroSection from "../components/LandingSection.jsx"
+import About from "../components/About.jsx"
+import Projects from "../components/Projects.jsx"
+import ProjectDetails from "../components/ProjectDetails.jsx"
 export function Home() {
   // Set "Home" as the default active tab on page load
   const [activeTab, setActiveTab] = useState('Home');
