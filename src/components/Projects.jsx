@@ -8,7 +8,7 @@ const Projects = ({ onViewDetails,viewAllProject }) => {
   );
 
   return (
-    <section className="flex flex-col items-center justify-center z-50 pb-3">
+    <section className="flex flex-col items-center pt-8 md:pt-0 justify-center z-50 pb-3">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
 
         {featuredProjects.map(project => (
