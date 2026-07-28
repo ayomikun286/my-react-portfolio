@@ -19,9 +19,9 @@ const ProjectGallery = ({ closeAllProject, onViewDetails }) => {
           </button>
         </div>
 
-        <div className='overflow-y-auto  scrollbar-none flex-1 p-3 flex gap-10 flex-wrap justify-center items-center'>
+        <div className='overflow-y-auto  scrollbar-none flex-1 p-5 md:p-3 flex gap-10 flex-wrap justify-center items-center'>
           {projects.map((project) => (
-            <div className='max-w-md'>
+            <div className='max-w-full md:max-w-md'>
               <ProjectCard
                 key={project.id}
                 project={project}
