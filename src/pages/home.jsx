@@ -6,10 +6,12 @@ import HeroSection from "../components/LandingSection.jsx"
 import About from "../components/About.jsx"
 import Projects from "../components/Projects.jsx"
 import ProjectDetails from "../components/ProjectDetails.jsx"
+import ProjectGallery from "../components/ProjectGallery.jsx";
 export function Home() {
   // Set "Home" as the default active tab on page load
   const [activeTab, setActiveTab] = useState('Home');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [allProject, setAllProject] = useState(true)
 
   return (
     <div className="hero min-h-screen text-white relative  overflow-x-hidden">
@@ -62,7 +64,7 @@ export function Home() {
 
         {activeTab === 'Projects' && (
           <div className="animate-fadeIn">
-            <Projects onViewDetails={setSelectedProject} />
+            <Projects onViewDetails={setSelectedProject} viewAllProject={setAllProject} />
           </div>
         )}
       </main>
@@ -74,6 +76,9 @@ export function Home() {
         />
       )}
 
+      {allProject && (
+        <ProjectGallery closeAllProject={setAllProject} onViewDetails={setSelectedProject}/>
+      )}
     </div>
   );
 }

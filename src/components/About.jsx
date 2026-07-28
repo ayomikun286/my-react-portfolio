@@ -24,7 +24,7 @@ const About = ({onOpenProject}) => {
                     onClick={() => setReadMore(true)}
                     className="px-8 py-3  bg-white text-[#030B1E] font-black tracking-wide uppercase transition-all duration-300 hover:bg-sky-400 hover:text-white"
                 >
-                    Read more
+                    Explore Profile 
                 </button>
 
                

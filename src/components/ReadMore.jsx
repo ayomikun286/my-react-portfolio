@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Skills from "./Skills.jsx"
+import Testimonial from "../components/Testimonial.jsx";
 
 const ReadMore = ({ setReadMore, onOpenProject }) => {
     const [certificate, setCertificate] = useState(false);
     const [aboutModule, setAboutModule] = useState(true);
+    const [testimonial, setTestimonial] = useState(false)
 
     const [selectedCertificate, setSelectedCertificate] = useState(null)
 
@@ -75,19 +77,27 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
                             </div>
                         </div>
 
-                        <div className='flex items-center flex-wrap space-x-5 mt-10'>
+                        <strong className='text-white block mt-10 pb-1 text-2xl w-fit border-b-2  border-sky-400 '> Ready to know more ?</strong>
+                        <div className='flex items-center flex-wrap gap-5 mt-10'>
                             <button
                                 onClick={() => onOpenProject('Projects')}
                                 className="px-8 py-3  md:bg-transparent bg-[#030B1E]  text-white border  font-black tracking-wide uppercase transition-all duration-300 hover:bg-[#030B1E] hover:text-white"
                             >
-                                View Project
+                                Project
                             </button>
 
                             <button
                                 onClick={() => { setCertificate(true); setAboutModule(false); }}
                                 className="px-8 py-3   bg-white  text-[#030B1E] border  font-black tracking-wide uppercase transition-all duration-300 hover:bg-[#030B1E] hover:text-white"
                             >
-                                View Certificates
+                                Certificates
+                            </button>
+
+                            <button
+                                onClick={() => { setTestimonial(true); setAboutModule(false); }}
+                                className="px-8 py-3   bg-white  text-[#030B1E] border  font-black tracking-wide uppercase transition-all duration-300 hover:bg-[#030B1E] hover:text-white"
+                            >
+                                Testimonials
                             </button>
 
                         </div>
@@ -97,6 +107,10 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
 
                 </div>
 
+            )}
+
+            {testimonial && (
+                <Testimonial setTestimonial={setTestimonial} setAboutModule={setAboutModule}/>
             )}
 
             {certificate && (

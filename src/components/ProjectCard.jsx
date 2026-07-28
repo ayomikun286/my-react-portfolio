@@ -16,7 +16,7 @@ function ProjectCard({ project, onViewDetails }) {
 
         {/* Category */}
         <span className="text-sky-400 text-sm font-medium">
-          {project.category}
+          {project.role}
         </span>
 
         {/* Title */}

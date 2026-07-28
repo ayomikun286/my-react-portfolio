@@ -4,60 +4,26 @@
 export const projects = [
   {
     id: 1,
-    featured: true,
-
-    title: "HITL Management System",
-
-    category: "Full Stack",
-
-    role: "Full Stack Developer",
-
-    overview:
-      "A secure management system built for a tech academy with authentication, role-based dashboards, and student management.",
-
-    stack: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Tailwind CSS"
-    ],
-
-    features: [
-      "OTP Authentication",
-      "Role-Based Access Control",
-      "Secure Cookie Authentication",
-      "CSRF Protection",
-      "Rate Limiting",
-      "Responsive Dashboard"
-    ],
-
-    thumbnail: null,
-
-    images: [
-      null
-    ],
-
-    github: "#",
-
-    live: "#",
-
-    completed: "2026"
-  },
-
-  {
-    id: 2,
 
     featured: true,
 
     title: "Investment Platform",
 
-    category: "Full Stack",
+    role: "Full Stack Developer",
 
-    role: "Backend Developer",
+    completed: "2026",
 
     overview:
       "A cryptocurrency investment platform with secure authentication and payment integration.",
+
+    problem:
+      "",
+
+    solution:
+      "",
+
+    learned:
+      [],
 
     stack: [
       "React",
@@ -73,16 +39,72 @@ export const projects = [
       "Investment Tracking"
     ],
 
+    challenges: [],
+
     thumbnail: null,
 
-    images: [
-      null
-    ],
+    images: [],
 
     github: "#",
 
-    live: "#",
+    live: "#"
+  },
 
-    completed: "2026"
+  {
+    id: 2,
+
+    featured: true,
+
+    title: "Investment Platform",
+
+    role: "Full Stack Developer",
+
+    completed: "2026",
+
+    overview:
+      "A cryptocurrency investment platform with secure authentication and payment integration.",
+
+    problem:
+      "",
+
+    solution:
+      "",
+
+    learned:
+      [
+        `This project improved my understanding of React
+                architecture, authentication flows, role-based
+                authorization and backend security.`,
+                `This project improved my understanding of React
+                architecture, authentication flows, role-based
+                authorization and backend security.`
+      ],
+
+    stack: [
+      "React",
+      "Express",
+      "MongoDB",
+      "NowPayments"
+    ],
+
+    features: [
+      "Crypto Payments",
+      "Authentication",
+      "Admin Dashboard",
+      "Investment Tracking"
+    ],
+
+    challenges: [
+      "One of the biggest challenges was creating a secure authentication system while keeping the user experience simple.",
+      "One of the biggest challenges was creating a secure authentication system while keeping the user experience simple."
+    ],
+
+    thumbnail: null,
+
+    images: [] || null,
+
+    github: "#" || null,
+
+    live: "#" || null
   }
 ];
