@@ -8,7 +8,7 @@ const ProjectGallery = ({ closeAllProject, onViewDetails }) => {
     <div className='fixed top-0 left-0 w-screen h-screen p-5 flex bg-black/70 justify-center items-center'>
       <div className='fadeInCard w-full max-w-6xl bg-[#030B1E] border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[89vh] z-50'>
         <div className='flex justify-between items-center mb-4 flex-shrink-0'>
-          <h1 className="text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
+          <h1 className="text-lg md:text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
             Project Gallery
           </h1>
           <button

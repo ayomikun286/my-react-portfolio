@@ -18,7 +18,7 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
 
                     {/* 3. Header Action Wrapper - Stays static at the top so Close Button is ALWAYS visible */}
                     <div className='flex justify-between items-center mb-4 flex-shrink-0'>
-                        <h1 className="text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
+                        <h1 className="text-lg md:text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
                             About Me
                         </h1>
                         <button
@@ -116,7 +116,7 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
             {certificate && (
                 <div className='fadeInCard w-full max-w-4xl bg-[#030B1E] border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[89vh] z-50'>
                     <div className='flex justify-between items-center mb-4 flex-shrink-0'>
-                        <h1 className="text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
+                        <h1 className="text-lg md:text-3xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1 w-fit uppercase">
                             Certificates
                         </h1>
                         <button
