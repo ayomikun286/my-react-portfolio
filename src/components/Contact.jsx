@@ -6,7 +6,7 @@ import ContactForm from "../components/ContactForm.jsx"
 const Contact = () => {
     return (
         <div className='flex  flex-col md:flex-row  md:items-center md:justify-between min-h-120 w-full md:max-w-4xl'>
-            <div className="flex  flex-row md:justify-center md:flex-col  space-x-2  space-y-5 text-5xl md:text-7xl ">
+            <div className="flex flex-row justify-center md:justify-center md:flex-col  space-x-2 items-center md:items-start space-y-5 text-5xl md:text-7xl ">
                 <a href='https://github.com/ayomikun286' target='_blank' className='flex gap-2 items-center'>
                 
                 <FontAwesomeIcon
