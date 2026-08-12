@@ -6,7 +6,7 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
     const [showMobileForm, setShowMobileForm] = useState(false);    
     return (
-        <div className='fadeInCard w-full max-w-6xl bg-[#030B1E] border border-white/10 p-5 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] md:max-h-[89vh] z-50'>
+        <div className='fadeInCard w-full max-w-6xl bg-[#030B1E] border border-white/10 p-5 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[80vh] md:max-h-[89vh] z-50'>
 
             {/* Header */}
             <div className='flex justify-between items-center mb-6 flex-shrink-0'>
