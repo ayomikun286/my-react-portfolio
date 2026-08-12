@@ -6,6 +6,7 @@ import HeroSection from "../components/LandingSection.jsx"
 import About from "../components/About.jsx"
 import Projects from "../components/Projects.jsx"
 import ProjectDetails from "../components/ProjectDetails.jsx"
+import Contact from "../components/Contact.jsx"
 import ProjectGallery from "../components/ProjectGallery.jsx";
 export function Home() {
   // Set "Home" as the default active tab on page load
@@ -56,9 +57,8 @@ export function Home() {
         )}
 
         {activeTab === 'Contact' && (
-          <div className="animate-fadeIn">
-            <h1 className="text-4xl font-bold mb-4">Let's Connect</h1>
-            <p className="text-gray-400">Reach out via email at your-email@example.com.</p>
+          <div className="animate-fadeIn flex justify-center  ">
+           <Contact />
           </div>
         )}
 

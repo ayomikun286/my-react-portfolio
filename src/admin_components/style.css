@@ -1,0 +1,15 @@
+.hero{
+    background-image: url('/Group 88.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+@media (max-width:750px) {
+
+    .sidebar{
+        position: fixed;
+    }
+    
+}

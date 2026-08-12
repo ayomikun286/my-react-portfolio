@@ -26,7 +26,7 @@ export default function HeroSection({ onOpenProject }) {
           I help businesses and startups build modern web application with React, Node.js, Express and MongoDB - from responsive frontends to scalable backends APIs
         </p>
 
-        {/* languages  */}
+        {/* social */}
         <div className="flex items-center space-x-2  text-4xl">
           <a href='https://github.com/ayomikun286' target='_blank'><FontAwesomeIcon
             icon={faGithub}

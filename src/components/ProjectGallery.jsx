@@ -1,8 +1,24 @@
 import React from 'react'
-import { projects } from "../data/Projects.js";
+import { useState, useEffect } from 'react';
+import { getProjects } from "../data/ProjectsRoute.js";
 import ProjectCard from "./ProjectCard.jsx";
 
 const ProjectGallery = ({ closeAllProject, onViewDetails }) => {
+      const [projects, setProjects] = useState([]);
+        useEffect(() => {
+            const fetchProjects = async () => {
+                try {
+                    const data = await getProjects();
+    
+                    setProjects(data);
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+    
+            fetchProjects();
+        }, []);
+
 
   return (
     <div className='fixed top-0 left-0 w-screen h-screen p-5 flex bg-black/70 justify-center items-center'>
