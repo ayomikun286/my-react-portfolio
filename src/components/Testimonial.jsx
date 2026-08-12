@@ -1,10 +1,91 @@
 import React from 'react'
-import {useState} from 'react'
+import { useState,useEffect } from 'react'
 import "./style.css"
-import Mobile_testimonial_form from './Mobile_testimonial_form'
+import { API_URL } from '../config';
+import TestimonialCard from './TestimonialCard.jsx';
+import { allTestimonials } from '../data/testimonialRoute.js';
+import Mobile_testimonial_form from './Mobile_testimonial_form.jsx'
 const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
-    const [showMobileForm, setShowMobileForm] = useState(false);    
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [role, setRole] = useState('');
+    const [company, setCompany] = useState('');
+    const [rating, setRating] = useState('');
+    const [message, setMessage] = useState('');
+    const [loader, setLoader] = useState(false);
+    const [showMobileForm, setShowMobileForm] = useState(false);
+
+    const [testimonials, setTestimonials] = useState([]);
+            useEffect(() => {
+                const fetchTestimonials = async () => {
+                    try {
+                        const data = await allTestimonials();
+
+                        setTestimonials(data);
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+        
+                fetchTestimonials();
+            }, []);
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!name.trim() || !email.trim() || !role.trim() || !rating.trim() || !message.trim()) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        try {
+            setLoader(true);
+
+            const response = await fetch(`${API_URL}/create-testimonial`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    role,
+                    company,
+                    rating,
+                    message
+                })
+            });
+
+
+            const data = await response.json();
+
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Something went wrong');
+            }
+
+            alert('Testimonial submitted successfully!');
+            setName('');
+            setEmail('');
+            setRole('');
+            setCompany('');
+            setRating('');
+            setMessage('');
+
+        } catch (err) {
+            console.log(err)
+
+        } finally {
+            setLoader(false);
+        }
+
+
+
+
+    }
     return (
         <div className='fadeInCard w-full max-w-6xl bg-[#030B1E] border border-white/10 p-5 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[80vh] md:max-h-[89vh] z-50'>
 
@@ -45,50 +126,22 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                             Your feedback helps me improve and gives others an idea of what it is like to work with me or learn from me.
                         </p>
                     </div>
-
+                   
 
                     {/* Testimonial Card */}
-                    <div className='bg-white/[0.03] border border-white/10 rounded-xl p-5 mb-4'>
 
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                            "This is a great platform for showcasing my work and connecting with potential clients."
-                        </p>
-
-                        <div className='mt-4'>
-                            <p className="text-sm font-semibold text-sky-400">
-                                John Doe
-                            </p>
-
-                            <p className='text-xs text-gray-500 mt-1'>
-                                Former Student
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div className='bg-white/[0.03] border border-white/10 rounded-xl p-5'>
-
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                            "Working with him was a great experience. Professional, patient and very knowledgeable."
-                        </p>
-
-                        <div className='mt-4'>
-                            <p className="text-sm font-semibold text-sky-400">
-                                Jane Doe
-                            </p>
-
-                            <p className='text-xs text-gray-500 mt-1'>
-                                Client
-                            </p>
-                        </div>
-
-                    </div>
-
+                   {testimonials.length === 0 ? (
+                        <p className='text-gray-400 text-sm md:text-base leading-relaxed'>No testimonials yet. Be the first to share your experience!</p>
+                    ) : (
+                        testimonials.map((testimonial, index) => (
+                            <TestimonialCard key={index} testimonial={testimonial} />
+                        ))
+                    )}
+    
                 </div>
 
                 <div className='block md:hidden'>
-                    <button onClick={()=> setShowMobileForm(true)} className='bg-sky-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-500'>
+                    <button onClick={() => setShowMobileForm(true)} className='bg-sky-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-500'>
                         LEAVE A TESTIMONIAL
                     </button>
                 </div>
@@ -96,11 +149,11 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
 
                 {/* mobile form */}
-                    {showMobileForm && (
-                        <Mobile_testimonial_form
-                            setShowMobileForm={setShowMobileForm}
-                        />
-                    )}
+                {showMobileForm && (
+                    <Mobile_testimonial_form
+                        setShowMobileForm={setShowMobileForm}
+                    />
+                )}
 
                 {/*  */}
 
@@ -120,7 +173,7 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                     </div>
 
 
-                    <form className='flex flex-col gap-4'>
+                    <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
 
                         {/* Name */}
                         <label
@@ -133,6 +186,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                                 type="text"
                                 name="name"
                                 placeholder="Your full name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 className='bg-[#030B1E] text-white placeholder:text-gray-600 border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg transition'
                             />
                         </label>
@@ -148,6 +203,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                             <input
                                 type="email"
                                 name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="you@example.com"
                                 className='bg-[#030B1E] text-white placeholder:text-gray-600 border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg transition'
                             />
@@ -165,6 +222,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                                 type="text"
                                 name="role"
                                 placeholder="e.g. Former Student, Client"
+                                value={role}
+                                onChange={(e) => setRole(e.target.value)}
                                 className='bg-[#030B1E] text-white placeholder:text-gray-600 border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg transition'
                             />
                         </label>
@@ -184,6 +243,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                                 type="text"
                                 name="company"
                                 placeholder="Company or organization"
+                                value={company}
+                                onChange={(e) => setCompany(e.target.value)}
                                 className='bg-[#030B1E] text-white placeholder:text-gray-600 border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg transition'
                             />
                         </label>
@@ -200,6 +261,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                                 name="rating"
                                 className='bg-[#030B1E] text-white border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg transition'
                                 defaultValue=""
+                                value={rating}
+                                onChange={(e) => setRating(e.target.value)}
                             >
                                 <option value="" disabled>
                                     Select a rating
@@ -224,6 +287,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                             <textarea
                                 name="message"
                                 rows="5"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Tell me about your experience..."
                                 className='bg-[#030B1E] text-white placeholder:text-gray-600 border border-gray-700 focus:outline-none focus:ring-1 focus:ring-sky-400 focus:border-sky-400 p-3 rounded-lg resize-none transition'
                             />
@@ -233,11 +298,12 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                         {/* Submit */}
                         <button
                             type="submit"
+                            disabled={loader}
                             className='w-full px-5 py-3 bg-sky-400 text-white font-bold rounded-lg hover:bg-sky-500 active:scale-[0.98] transition-all'
                         >
-                            Submit Testimonial
-                        </button>
 
+                            {loader ? "Submitting..." : "Submit Testimonial"}
+                        </button>
                     </form>
 
                 </div>
