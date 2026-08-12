@@ -3,7 +3,7 @@ import React from 'react'
 const Mobile_testimonial_form = ({ setShowMobileForm }) => {
   return (
    <div className='fixed top-0 left-0 w-full h-full bg-black/70 z-50 flex items-center justify-center p-4 md:p-8'>
-         <div className='relative w-full max-w-2xl max-h-120 bg-[#030B1E] p-8 rounded-2xl overflow-y-auto scrollbar-none'>
+         <div className='relative w-full max-w-2xl max-h-[80vh] bg-[#030B1E] p-8 rounded-2xl overflow-y-auto scrollbar-none'>
 
                     <div className='mb-5'>
                         <p className='text-sm text-sky-400 font-semibold'>
