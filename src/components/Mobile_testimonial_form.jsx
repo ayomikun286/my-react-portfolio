@@ -1,113 +1,9 @@
 import React from 'react'
-import {useState} from 'react'
-import "./style.css"
-import Mobile_testimonial_form from './Mobile_testimonial_form'
-const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
-    const [showMobileForm, setShowMobileForm] = useState(false);    
-    return (
-        <div className='fadeInCard w-full max-w-6xl bg-[#030B1E] border border-white/10 p-5 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[98vh] md:max-h-[89vh] z-50'>
-
-            {/* Header */}
-            <div className='flex justify-between items-center mb-6 flex-shrink-0'>
-                <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white border-b-4 border-sky-400 pb-1 w-fit uppercase">
-                    Testimonial
-                </h1>
-
-                <button
-                    className='border border-white/20 w-8 h-8 flex justify-center items-center rounded-lg cursor-pointer hover:bg-white/10 transition-colors'
-                    onClick={() => {
-                        setTestimonial(false);
-                        setAboutModule(true);
-                    }}
-                >
-                    <img src="xmark.png" alt="Close" width={14} />
-                </button>
-            </div>
-
-
-            {/* Content */}
-            <div className='flex flex-col md:flex-row gap-8 flex-1 min-h-0 overflow-hidden'>
-
-                {/* Testimonials */}
-                <div className='flex-1 md:pr-8 md:border-r border-white/10 overflow-y-auto scrollbar-none p-1'>
-
-                    <div className='mb-6'>
-                        <p className="text-sm text-sky-400 font-semibold mb-2">
-                            WHAT PEOPLE SAY
-                        </p>
-
-                        <h2 className='text-2xl md:text-3xl font-bold text-white mb-3'>
-                            Your experience matters.
-                        </h2>
-
-                        <p className='text-gray-400 text-sm md:text-base leading-relaxed'>
-                            Your feedback helps me improve and gives others an idea of what it is like to work with me or learn from me.
-                        </p>
-                    </div>
-
-
-                    {/* Testimonial Card */}
-                    <div className='bg-white/[0.03] border border-white/10 rounded-xl p-5 mb-4'>
-
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                            "This is a great platform for showcasing my work and connecting with potential clients."
-                        </p>
-
-                        <div className='mt-4'>
-                            <p className="text-sm font-semibold text-sky-400">
-                                John Doe
-                            </p>
-
-                            <p className='text-xs text-gray-500 mt-1'>
-                                Former Student
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div className='bg-white/[0.03] border border-white/10 rounded-xl p-5'>
-
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                            "Working with him was a great experience. Professional, patient and very knowledgeable."
-                        </p>
-
-                        <div className='mt-4'>
-                            <p className="text-sm font-semibold text-sky-400">
-                                Jane Doe
-                            </p>
-
-                            <p className='text-xs text-gray-500 mt-1'>
-                                Client
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div className='md:hidden'>
-                    <button onClick={()=> setShowMobileForm(true)} className='bg-sky-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-500'>
-                        LEAVE A TESTIMONIAL
-                    </button>
-                </div>
-
-
-
-                {/* mobile form */}
-                    {showMobileForm && (
-                        <Mobile_testimonial_form
-                            setShowMobileForm={setShowMobileForm}
-                        />
-                    )}
-
-                {/*  */}
-
-
-
-                {/* Form */}
-                <div className='hidden md:block flex-1 md:min-h-0 p-1 md:pl-2 overflow-y-auto scrollbar-none'>
+const Mobile_testimonial_form = ({ setShowMobileForm }) => {
+  return (
+   <div className='fixed top-0 left-0 w-full h-full bg-black/70 z-50 flex items-center justify-center p-4 md:p-8'>
+         <div className='relative w-full max-w-2xl max-h-120 bg-[#030B1E] p-8 rounded-2xl overflow-y-auto scrollbar-none'>
 
                     <div className='mb-5'>
                         <p className='text-sm text-sky-400 font-semibold'>
@@ -118,6 +14,15 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                             Tell me about your experience working or learning with me.
                         </p>
                     </div>
+
+                    <button
+                    className='absolute top-4 right-4 border border-white/20 w-8 h-8 flex justify-center items-center rounded-lg cursor-pointer hover:bg-white/10 transition-colors'
+                    onClick={() => {
+                        setShowMobileForm(false);
+                    }}
+                >
+                    <img src="xmark.png" alt="Close" width={14} />
+                </button>
 
 
                     <form className='flex flex-col gap-4'>
@@ -241,11 +146,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                     </form>
 
                 </div>
-
-            </div>
-
-        </div>
-    )
+   </div>
+  )
 }
 
-export default Testimonial
+export default Mobile_testimonial_form
