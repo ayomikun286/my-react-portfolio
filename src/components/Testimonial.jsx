@@ -87,7 +87,7 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
                 </div>
 
-                <div className='md:hidden'>
+                <div className='block md:hidden'>
                     <button onClick={()=> setShowMobileForm(true)} className='bg-sky-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-500'>
                         LEAVE A TESTIMONIAL
                     </button>
