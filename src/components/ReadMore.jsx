@@ -12,7 +12,7 @@ const ReadMore = ({ setReadMore, onOpenProject }) => {
 
     return (
         // 1. Structural overlay container setup
-        <div className='fixed inset-0 w-screen overflow-hidden h-screen flex justify-center items-center bg-black/50 backdrop-blur-[10px] z-80 p-4 md:p-10 animate-fadeIn '>
+        <div className='fixed top-0 left-0 inset-0 w-screen overflow-hidden h-screen flex justify-center items-center bg-black/50 backdrop-blur-[10px] z-80 p-4 md:p-10  '>
 
             {aboutModule && (
                 <div className='fadeInCard w-full max-w-4xl bg-[#030B1E] border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col max-h-[89vh] z-50'>
