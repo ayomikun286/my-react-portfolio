@@ -21,7 +21,6 @@ const AdminDashboard = () => {
 
   return (
     <div className='hero flex px-2 overflow-auto h-screen w-screen '>
-      {isOpen === false && <div className='md:hidden w-10 border rounded-full border-sky-400 h-10 fixed  flex justify-center items-center bg-black/50 backdrop-blur-[10px]  z-50 top-3 l-5' onClick={()=> setIsOpen(true)}> <FaArrowRight className='text-sky-400 text-xl ' /></div>}
       <SideBar setSection={setSection} active={Section} isOpen={isOpen} setIsOpen={setIsOpen}/>
       <div className='w-screen h-screen '>
         {Section === "analyses" && <ProjectAnalyses />}
