@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+
 /* 1. Define how the animation behaves over time */
 @keyframes fadeIn {
   from { opacity: 0;  }

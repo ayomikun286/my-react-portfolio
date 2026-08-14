@@ -7,6 +7,7 @@ function ProjectCard({ project, onViewDetails }) {
         <img
           src={project.thumbnail}
           alt={project.title}
+          loading="lazy"
           className="w-full h-55 object-cover hover:scale-105 transition duration-500"
         />
       </div>

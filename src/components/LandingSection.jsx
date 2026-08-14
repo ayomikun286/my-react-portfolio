@@ -5,19 +5,19 @@ export default function HeroSection({ onOpenProject }) {
   return (
     <div className="flex items-start justify-center min-h-[70vh] max-w-3xl ">
 
-      <div className='flex flex-col space-y-5 mt-6'>
+      <div className='animate-slide-in-left flex flex-col space-y-5 mt-6'>
         {/* 1. Subtle, stylish subtitle hook */}
         <span className="text-sky-400 font-mono tracking-widest text-sm uppercase mb-3">
         // Hello World, I am
         </span>
 
         {/* 2. Your Full Legal Name */}
-        <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-5">
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-5">
           Edegbai Ayomikun <br className="hidden md:block" /> Oluwaseun.
         </h1>
 
         {/* 3. Catchy Nickname & Core Role Subheading */}
-        <h2 className="text-xl md:text-5xl font-extrabold text-gray-400 mb-6">
+        <h2 className="text-xl md:text-4xl font-extrabold text-gray-400 mb-6">
           Known online as <span className="text-white border-b-4 border-sky-400 pb-1">mikunDev</span>.
         </h2>
 

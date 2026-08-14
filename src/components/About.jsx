@@ -7,7 +7,7 @@ const About = ({onOpenProject}) => {
 
     const [readMore, setReadMore] = useState(false)
     return (
-        <div className="flex items-start flex-col justify-start mt-10 min-h-[70vh]  max-w-3xl">
+        <div className="animate-slide-in-left flex items-start flex-col justify-start mt-10 min-h-[70vh]  max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-2 border-b-4 border-sky-400 pb-1">About me </h1>
 
             <p className="text-gray-400 text-lg mt-8 md:text-xl leading-relaxed max-w-2xl mb-8">

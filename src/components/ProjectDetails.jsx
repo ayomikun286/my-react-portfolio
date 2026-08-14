@@ -124,8 +124,10 @@ const ProjectDetails = ({ project, onClose }) => {
             </h3>
 
             <div className="grid grid-cols-4 gap-4">
-              {project.images.map((image)=>(
+              {project.images.map((image,index)=>(
                  <img
+                key={index}
+                alt={project.title + index}
                 src={image}
                 loading='lazy'
                 className="rounded-xl cursor-pointer hover:scale-105 transition"
