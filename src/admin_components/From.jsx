@@ -48,7 +48,7 @@ const From = () => {
                 setLoader(false)
                 setTimeout(()=>{
                     setSuccess(data.message);
-                    //  navigate('/admin')
+                     navigate('/admin')
                 },1500)
             }
 
