@@ -4,7 +4,10 @@ import "./style.css"
 import { API_URL } from '../config';
 import TestimonialCard from './TestimonialCard.jsx';
 import { allTestimonials } from '../data/testimonialRoute.js';
+import WaitingCard from "./waiting-card.jsx"
 import Mobile_testimonial_form from './Mobile_testimonial_form.jsx'
+import Waiting from './Waiting.jsx';
+import AlertCard from './Alert-card.jsx';
 const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
     const [name, setName] = useState('');
@@ -15,15 +18,20 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
     const [message, setMessage] = useState('');
     const [loader, setLoader] = useState(false);
     const [showMobileForm, setShowMobileForm] = useState(false);
-
+    const [loading, setLoading] = useState(true);
     const [testimonials, setTestimonials] = useState([]);
+
+    const [error, setError] = useState(false); 
+    const [success, setSuccess] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
             useEffect(() => {
                 const fetchTestimonials = async () => {
                     try {
                         const data = await allTestimonials();
-
+                       setLoading(false)
                         setTestimonials(data);
                     } catch (error) {
+                        setLoading(false)
                         console.error(error);
                     }
                 };
@@ -37,7 +45,12 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
         e.preventDefault();
 
         if (!name.trim() || !email.trim() || !role.trim() || !rating.trim() || !message.trim()) {
-            alert('Please fill in all required fields.');
+            setError(true);
+            setAlertMessage('Please fill in all required fields.');
+            setTimeout(() =>{
+                 setError(false);
+            setAlertMessage('');
+            },1500)
             return;
         }
 
@@ -65,16 +78,25 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
             if (!response.ok) {
                 throw new Error(data.message || 'Something went wrong');
+
             }
 
             alert('Testimonial submitted successfully!');
-            setName('');
-            setEmail('');
-            setRole('');
-            setCompany('');
-            setRating('');
-            setMessage('');
+            setSuccess(true);
+            setAlertMessage('Testimonial submitted successfully!');
+            setTimeout(() => {
+                setSuccess(false);
+                setAlertMessage('');
+                setName('');
+                setEmail('');
+                setRole('');
+                setCompany('');
+                setRating('');
+                setMessage('');
 
+            }, 1500)
+
+           
         } catch (err) {
             console.log(err)
 
@@ -111,7 +133,7 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
             <div className='flex flex-col md:flex-row gap-8 flex-1 min-h-0 overflow-hidden'>
 
                 {/* Testimonials */}
-                <div className='flex-1 md:pr-8 md:border-r border-white/10 overflow-y-auto scrollbar-none p-1'>
+                <div className='flex-1 relative md:pr-8 md:border-r border-white/10 overflow-y-auto scrollbar-none p-1'>
 
                     <div className='mb-6'>
                         <p className="text-sm text-sky-400 font-semibold mb-2">
@@ -130,14 +152,19 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
                     {/* Testimonial Card */}
 
-                   {testimonials.length === 0 ? (
-                        <p className='text-gray-400 text-sm md:text-base leading-relaxed'>No testimonials yet. Be the first to share your experience!</p>
+                    {loading ? (
+                         <WaitingCard />
+                    ): testimonials.length === 0 ? (
+                        <p className='text-gray-400 text-sm md:text-base leading-relaxed bg-[#030B1E] border border-gray-700 rounded-lg p-5 mb-4'>No testimonials yet. Be the first to share your experience!</p>
                     ) : (
                         testimonials.map((testimonial, index) => (
                             <TestimonialCard key={index} testimonial={testimonial} />
                         ))
-                    )}
+                    ) }
+
+                   
     
+                   
                 </div>
 
                 <div className='block md:hidden'>
@@ -151,7 +178,8 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
                 {/* mobile form */}
                 {showMobileForm && (
                     <Mobile_testimonial_form
-                        setShowMobileForm={setShowMobileForm}
+                        setShowMobileForm={setShowMobileForm} loader={loader} setLoader={setLoader}
+                        setError={setError} setSuccess={setSuccess} setAlertMessage={setAlertMessage}
                     />
                 )}
 
@@ -160,7 +188,7 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
 
                 {/* Form */}
-                <div className='hidden md:block flex-1 md:min-h-0 p-1 md:pl-2 overflow-y-auto scrollbar-none'>
+                <div className='hidden relative md:block flex-1 md:min-h-0 p-1 md:pl-2 overflow-y-auto scrollbar-none'>
 
                     <div className='mb-5'>
                         <p className='text-sm text-sky-400 font-semibold'>
@@ -304,12 +332,17 @@ const Testimonial = ({ setTestimonial, setAboutModule }) => {
 
                             {loader ? "Submitting..." : "Submit Testimonial"}
                         </button>
+
+                        
                     </form>
 
                 </div>
 
             </div>
 
+           {loader && ( <Waiting />)}
+            <AlertCard errorMessage={alertMessage} showError={error} showSuccess={success} />
+                 
         </div>
     )
 }
