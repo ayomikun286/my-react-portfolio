@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import Login from "./pages/admin/Login.jsx";
 import ProtectedRoute from "./admin_components/ProtectedRoute.jsx";
-import AdminDashboard from "./pages/admin/AdminDashboard.jsx"
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
+// import Test from "./components/TESTING.jsx"
 function App() {
     return (
         <Routes>
@@ -24,6 +25,8 @@ function App() {
                     // </ProtectedRoute>
                 }
             />
+
+            {/* <Route path="/testing" element={<Test />} /> */}
 
         </Routes>
     );

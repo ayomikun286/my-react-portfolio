@@ -18,7 +18,7 @@ export function Home() {
     <div className="hero min-h-screen text-white relative  overflow-x-hidden">
 
       {/* The Single-Page Navigation Menu */}
-      <nav className="fixed top-4 left-6 flex flex-wrap items-center gap-2 ">
+      <nav className="fixed top-4 left-6 flex  overflow-x-auto scrollbar-none items-center gap-2 ">
         <SplashNavLink
           label="Home"
           isActive={activeTab === 'Home'}

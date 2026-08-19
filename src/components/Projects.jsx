@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getProjects } from "../data/ProjectsRoute.js";
 import ProjectCard from "./ProjectCard.jsx";
 import Waiting from './Waiting.jsx';
+import WaitingCard from "./waiting-card.jsx"
 const Projects = ({ onViewDetails, viewAllProject }) => {
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
@@ -31,7 +32,9 @@ const Projects = ({ onViewDetails, viewAllProject }) => {
     <section className="flex flex-col items-center pt-8 md:pt-0 justify-center z-50 pb-3">
 
       {loading ? (
-        <Waiting />
+       <div className='relative min-h-100 flex justify-center items-center '>
+         <WaitingCard />
+       </div>
       ) : (<div className='w-full animate-slide-in-left  '>
        {projects.length > 0 ? (
   <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
