@@ -38,7 +38,7 @@ const hiddenCount = testimonials.filter(
 
                 <button
                     onClick={() => setSection("addTestimonial")}
-                    className='bg-[#3B82F6] px-3 py-2 rounded'>
+                    className='bg-[#3B82F6] text-sm md:text-lg  p-2 md:px-3 md:py-2 rounded'>
                     <p className='font-semibold '>Add Testimonial</p>
                 </button>
             </div>
