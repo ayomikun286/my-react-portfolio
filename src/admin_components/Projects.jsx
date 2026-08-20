@@ -66,12 +66,12 @@ const Projects = ({ setSection }) => {
             </div>
 
             <div className='flex justify-between p-4'>
-                <div className='flex gap-2 flex-wrap'>
+                <div className='flex gap-2 '>
                     <button className='p-3 text-sm md:text-md font-semibold bg-[#3B82F6] rounded border border-[#1E293B]'>All <span>(12)</span></button>
                     <button className='p-3 font-semibold text-sm md:text-md  rounded border border-[#1E293B]'>Published <span>(12)</span></button>
                     <button className='p-3 font-semibold text-sm md:text-md  rounded border border-[#1E293B]'>Draft <span>(12)</span></button>
                 </div>
-                <div>
+                <div className='hidden md:block'>
                     <select className='border p-3 border-[#1E293B] rounded text-[#F8FAFC]'>
                         <option>ALL Categories</option>
                     </select>
