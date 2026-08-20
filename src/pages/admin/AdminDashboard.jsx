@@ -27,7 +27,7 @@ const AdminDashboard = () => {
 
   return (
     <div className='flex h-screen w-screen bg-[#050B14] '>
-      <div className='side hidden md:block flex-0  md:flex-1'>
+      <div className={`side md:block md:flex-1`}>
         <SideBar Section={Section} setSection={setSection} isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
       <div className='main flex-1 md:flex-6 w-full  flex flex-col'>

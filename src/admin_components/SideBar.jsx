@@ -25,7 +25,7 @@ import {
 const SideBar = ({ setSection, Section, isOpen,setIsOpen}) => {
 
   return (
-    <div className={`sidebar text-[#F8FAFC] bg-[#050B14] relative flex flex-col justify-start  h-screen border-r border-gray-500/30 md:translate-x-0 ease-in transition duration-150 z-50 ${isOpen ? "translate-x-0" : "-translate-x-800"}`}>
+    <div className={`sidebar text-[#F8FAFC] bg-[#050B14] relative flex flex-col justify-start  h-screen border-r border-gray-500/30 ease-in transition duration-150 z-50`}>
       <div className='p-5'>
         <img src="" alt="logo" />
       </div>
