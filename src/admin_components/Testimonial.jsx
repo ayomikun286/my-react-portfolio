@@ -45,9 +45,9 @@ const hiddenCount = testimonials.filter(
 
             <div className='flex justify-between p-4'>
                 <div className='flex gap-2'>
-                    <button className='p-3 font-semibold bg-[#3B82F6] rounded border border-[#1E293B]'>All <span>({testimonials.length})</span></button>
-                    <button className='p-3 font-semibold  rounded border border-[#1E293B]'>Published <span>({publishedCount})</span></button>
-                    <button className='p-3 font-semibold  rounded border border-[#1E293B]'>Hidden <span>({hiddenCount})</span></button>
+                    <button className='p-3 text-sm md:text-md font-semibold bg-[#3B82F6] rounded border border-[#1E293B]'>All <span>({testimonials.length})</span></button>
+                    <button className='p-3 text-sm md:text-md font-semibold  rounded border border-[#1E293B]'>Published <span>({publishedCount})</span></button>
+                    <button className='p-3 text-sm md:text-md font-semibold  rounded border border-[#1E293B]'>Hidden <span>({hiddenCount})</span></button>
                 </div>
                 {/* <div>
                     <select className='border p-3 border-[#1E293B] rounded text-[#F8FAFC]'>
