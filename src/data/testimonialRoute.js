@@ -12,3 +12,15 @@ export const allTestimonials = async () => {
     throw error;
   }
 };
+
+export const All_Testimonials = async () => {
+  try {
+    const response = await fetch(`${API_URL}/AllTestimonial`);
+    const data = await response.json();
+    console.log("Fetched testimonials:", data); // Log the fetched data for debugging
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching testimonials:", error);
+    throw error;
+  }
+};
