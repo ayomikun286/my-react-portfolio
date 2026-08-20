@@ -83,7 +83,7 @@ const AdminDashboard = () => {
         )}
 
         {Section === "addProject" && (
-          <div className='bg-pink-400 w-full h-full overflow-y-auto scrollbar-none'>
+          <div className='p-3 mb-1 w-full h-full overflow-y-auto scrollbar-none'>
             <Add_Project setSection={setSection} />
           </div>
         )}
