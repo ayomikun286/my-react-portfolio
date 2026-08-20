@@ -12,17 +12,23 @@ import {
   FaComment,
   FaEnvelope,
   FaUser,
-  
-  
+
+
 
 } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import {
   FiBriefcase,
   FiMessageCircle,
   FiMail,
   FiEye
 } from "react-icons/fi";
-const SideBar = ({ setSection, Section, isOpen,setIsOpen}) => {
+const SideBar = ({ setSection, Section, isOpen, setIsOpen }) => {
+
+  const handleNavigation = (section) => {
+    setSection(section);
+    setIsOpen(false);
+  };
 
   return (
     <div className={`sidebar text-[#F8FAFC] bg-[#050B14] relative flex flex-col justify-start  h-screen border-r border-gray-500/30 ease-in transition duration-150 z-50`}>
@@ -30,48 +36,77 @@ const SideBar = ({ setSection, Section, isOpen,setIsOpen}) => {
         <img src="" alt="logo" />
       </div>
 
-      <span className='w-5 h-5 bg-sky-400 rounded-full absolute right-2 top-3 flex md:hidden justify-center items-center text-black' onClick={()=> setIsOpen(false)} ><FaTools  className='text-sm'/></span>
+      <button
+    type="button"
+    onClick={() => setIsOpen(false)}
+    className="w-8 h-8 bg-sky-400 rounded-full absolute right-3 top-3 flex md:hidden justify-center items-center text-black"
+>
+    <FaTimes />
+</button>
 
       <div className='flex flex-col gap-4 p-2'>
 
         <small className='font-bold text-[0.7rem] mb-3'>MAIN</small>
         <button
-          onClick={() => setSection('dashboard')}
-          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75  p-2 rounded ${Section === "dashboard" ? "bg-[#3B82F6]" : "bg-transparent"}`}>
+          onClick={() => handleNavigation("dashboard")}
+          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75 p-2 rounded ${Section === "dashboard"
+              ? "bg-[#3B82F6]"
+              : "bg-transparent"
+            }`}
+        >
           <FaHome />
-          <p className='font-semibold text-sm'>Dashboard</p>
+          <p className="font-semibold text-sm">Dashboard</p>
         </button>
 
+       <button
+    onClick={() => handleNavigation("project")}
+    className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75 p-2 rounded ${
+        Section === "project"
+            ? "bg-[#3B82F6]"
+            : "bg-transparent"
+    }`}
+>
+    <FiBriefcase />
+    <p className="font-semibold text-sm">Projects</p>
+</button>
         <button
-          onClick={() => setSection('project')}
-          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75  p-2 rounded ${Section === "project" ? "bg-[#3B82F6]" : "bg-transparent"}`}>
-          <FiBriefcase />
-          <p className='font-semibold text-sm'>Projects</p>
-        </button>
-        <button
-          onClick={() => setSection('testimonial')}
-          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75  p-2 rounded ${Section === "testimonials" ? "bg-[#3B82F6]" : "bg-transparent"}`}>
-          <FiMessageCircle />
-          <p className='font-semibold text-sm'>Testimonials</p>
-        </button>
+    onClick={() => handleNavigation("testimonial")}
+    className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75 p-2 rounded ${
+        Section === "testimonial"
+            ? "bg-[#3B82F6]"
+            : "bg-transparent"
+    }`}
+>
+    <FiMessageCircle />
+    <p className="font-semibold text-sm">Testimonials</p>
+</button>
       </div>
 
       <div className='flex flex-col gap-2 p-2' >
         <small className='font-bold text-[0.7rem] mb-3'>MANAGEMENT</small>
 
-        <button
-          onClick={() => setSection('message')}
-          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75  p-2 rounded ${Section === "message" ? "bg-[#3B82F6]" : "bg-transparent"}`}>
-          <FaEnvelope />
-          <p className='font-semibold text-sm'>Message</p>
-        </button>
-
-        <button
-          onClick={() => setSection('user')}
-          className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75  p-2 rounded ${Section === "user" ? "bg-[#3B82F6]" : "bg-transparent"}`}>
-          <FaUser />
-          <p className='font-semibold text-sm'>User</p>
-        </button>
+       <button
+    onClick={() => handleNavigation("message")}
+    className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75 p-2 rounded ${
+        Section === "message"
+            ? "bg-[#3B82F6]"
+            : "bg-transparent"
+    }`}
+>
+    <FaEnvelope />
+    <p className="font-semibold text-sm">Message</p>
+</button>
+<button
+    onClick={() => handleNavigation("user")}
+    className={`flex items-center gap-3 hover:bg-[#3B82F6] transition ease-in duration-75 p-2 rounded ${
+        Section === "user"
+            ? "bg-[#3B82F6]"
+            : "bg-transparent"
+    }`}
+>
+    <FaUser />
+    <p className="font-semibold text-sm">User</p>
+</button>
       </div>
 
 

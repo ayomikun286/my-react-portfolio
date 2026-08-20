@@ -27,9 +27,28 @@ const AdminDashboard = () => {
 
   return (
     <div className='flex h-screen w-screen bg-[#050B14] '>
-      <div className={`side  overflow-hidden  md:w-100 ${isOpen ? "w-80":"w-0"} `}>
-        <SideBar Section={Section} setSection={setSection} isOpen={isOpen} setIsOpen={setIsOpen} />
-      </div>
+      <div
+    className={`
+        fixed
+        md:relative
+        top-0
+        left-0
+        h-screen
+        z-50
+        overflow-hidden
+        transition-all
+        duration-200
+        ${isOpen ? "w-80" : "w-0"}
+        md:w-72
+    `}
+>
+    <SideBar
+        Section={Section}
+        setSection={setSection}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+    />
+</div>
       <div className='main  w-full  flex flex-col'>
         <ADnavbar isOpen={isOpen} setIsOpen={setIsOpen} />
         {Section === "dashboard" && (
