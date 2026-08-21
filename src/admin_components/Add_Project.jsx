@@ -256,7 +256,7 @@ const Add_Project = ({ setSection }) => {
 
   return (
 
-    <div>
+    <div className="relative">
 
       {/* HEADER */}
 
@@ -500,7 +500,7 @@ const Add_Project = ({ setSection }) => {
 
 
 
-         
+
 
 
 
@@ -538,7 +538,7 @@ const Add_Project = ({ setSection }) => {
             </label>
 
 
-            
+
 
 
             <div className="mt-4">
@@ -662,144 +662,153 @@ const Add_Project = ({ setSection }) => {
 
 
 
-         
+
 
           </div>
           <div className="border flex flex-col gap-5 p-5 bg-[#0B1422] border-[#1E293B] rounded-2xl w-full">
 
 
-                     {/* CHALLENGES */}
+            {/* CHALLENGES */}
 
-          <label>
-
-            <p className="font-semibold">
-              Challenges
-            </p>
-
-            <textarea
-              name="challenges"
-              value={formData.challenges}
-              onChange={handleChange}
-              rows="3"
-              placeholder="API integration, authentication..."
-              className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm resize-none"
-            />
-
-          </label>
-
-
-
-          {/* LEARNED */}
-
-          <label>
-
-            <p className="font-semibold">
-              What I Learned
-            </p>
-
-            <textarea
-              name="learned"
-              value={formData.learned}
-              onChange={handleChange}
-              rows="3"
-              placeholder="Better API architecture, deployment..."
-              className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm resize-none"
-            />
-
-          </label>
-
-
-             {/* LINKS */}
-
-          <div className="flex gap-3 flex-col ">
-
-            <label className="w-full">
+            <label>
 
               <p className="font-semibold">
-                GitHub URL
+                Challenges
               </p>
 
-              <input
-                type="url"
-                name="github"
-                value={formData.github}
+              <textarea
+                name="challenges"
+                value={formData.challenges}
                 onChange={handleChange}
-                placeholder="https://github.com/..."
-                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm"
+                rows="3"
+                placeholder="API integration, authentication..."
+                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm resize-none"
               />
 
             </label>
 
 
 
-            <label className="w-full">
+            {/* LEARNED */}
+
+            <label>
 
               <p className="font-semibold">
-                Live URL
+                What I Learned
               </p>
 
-              <input
-                type="url"
-                name="live"
-                value={formData.live}
+              <textarea
+                name="learned"
+                value={formData.learned}
                 onChange={handleChange}
-                placeholder="https://..."
-                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm"
+                rows="3"
+                placeholder="Better API architecture, deployment..."
+                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm resize-none"
               />
 
             </label>
 
 
-               {/* FEATURED */}
+            {/* LINKS */}
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <div className="flex gap-3 flex-col ">
 
-              <input
-                type="checkbox"
-                name="featured"
-                checked={formData.featured}
-                onChange={handleChange}
-                className="w-4 h-4"
-              />
+              <label className="w-full">
 
-              <span className="font-semibold">
-                Featured Project
-              </span>
+                <p className="font-semibold">
+                  GitHub URL
+                </p>
 
-            </label>
+                <input
+                  type="url"
+                  name="github"
+                  value={formData.github}
+                  onChange={handleChange}
+                  placeholder="https://github.com/..."
+                  className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm"
+                />
 
-
-
-            {/* SUBMIT */}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-50 p-3 rounded-lg font-semibold transition"
-            >
-
-              {loading ? "Creating Project..." : "Create Project"}
-
-            </button>
+              </label>
 
 
 
-            {/* MESSAGE */}
+              <label className="w-full">
 
-            {message && (
+                <p className="font-semibold">
+                  Live URL
+                </p>
 
-              <p className="text-sm text-center text-gray-300">
-                {message}
-              </p>
+                <input
+                  type="url"
+                  name="live"
+                  value={formData.live}
+                  onChange={handleChange}
+                  placeholder="https://..."
+                  className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md focus:outline-none focus:border-[#3B82F6] placeholder:text-sm"
+                />
 
-            )}
+              </label>
 
-          </div>
+
+              {/* FEATURED */}
+
+              <label className="flex items-center gap-3 cursor-pointer">
+
+                <input
+                  type="checkbox"
+                  name="featured"
+                  checked={formData.featured}
+                  onChange={handleChange}
+                  className="w-4 h-4"
+                />
+
+                <span className="font-semibold">
+                  Featured Project
+                </span>
+
+              </label>
+
+
+
+              {/* SUBMIT */}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-50 p-3 rounded-lg font-semibold transition"
+              >
+
+                {loading ? "Creating Project..." : "Create Project"}
+
+              </button>
+
+
+
+              {/* MESSAGE */}
+
+              {message && (
+
+                <p className="text-sm text-center text-gray-300">
+                  {message}
+                </p>
+
+              )}
+
+            </div>
 
           </div>
         </div>
 
       </form>
+
+      {loading && (
+        <div className='absolute z-50 inset-0 top-0 left-0 w-full h-full flex justify-center items-center'>
+          <div className='bg-gray-950 min-w-20 gap-3 p-3 min-h-20 rounded border border-gray-400 flex flex-col justify-center items-center'>
+            <span className='spin w-8 h-8  rounded-full border-2 border-gray-50 border-t-gray-950 '> </span>
+            <small className='font-bold tracking-wider'>Loading...</small>
+          </div>
+        </div>
+      )}
 
     </div>
   );

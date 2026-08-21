@@ -5,18 +5,25 @@ import {
     FaTrash
 } from "react-icons/fa";
 import { API_URL } from '../config.js';
+import ProjectDetails from "../admin_components/ProjectDetails.jsx"
 import { getProjects } from "../data/ProjectsRoute.js";
+import Loading from "./Landing.jsx"
 const Projects = ({ setSection }) => {
-
+    const [edit, setEdit] = useState(false)
     const [projects, setProjects] = useState([]);
+    const [details, setDetails] =useState([])
+    const [loader, setLoader] = useState(true)
+
+
     useEffect(() => {
         const fetchProjects = async () => {
             try {
                 const data = await getProjects();
-
+                setLoader(false)
                 setProjects(data);
             } catch (error) {
                 console.error(error);
+                setLoader(false)
             }
         };
 
@@ -24,6 +31,11 @@ const Projects = ({ setSection }) => {
     }, []);
 
 
+
+   const handleEdit =(project) =>{
+    setEdit(true)
+    setDetails(project)
+   }
 
     const handleDelete = async (projectId) => {
         alert('working')
@@ -50,7 +62,7 @@ const Projects = ({ setSection }) => {
         }
     };
     return (
-        <div className=' text-white w-full h-full'>
+        <div className=' relative text-white w-full h-full'>
 
             <div className='flex justify-between mb-8'>
                 <div className=''>
@@ -162,6 +174,7 @@ const Projects = ({ setSection }) => {
                                         <button
                                             className="p-2 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition"
                                             title="Edit project"
+                                            onClick={()=> handleEdit(project)}
                                         >
                                             <FaEdit />
                                         </button>
@@ -182,10 +195,28 @@ const Projects = ({ setSection }) => {
                         ))}
                     </tbody>
                 </table>
+
+
+
+
+                {loader && (
+                    <div className='absolute z-50 inset-0 top-0 left-0 w-full h-full flex justify-center items-center'>
+                        <div className='bg-gray-950 min-w-20 gap-3 p-3 min-h-20 rounded border border-gray-400 flex flex-col justify-center items-center'>
+                            <span className='spin w-8 h-8  rounded-full border-2 border-gray-50 border-t-gray-950 '> </span>
+                            <small className='font-bold tracking-wider'>Loading...</small>
+                        </div>
+                    </div>
+                )}
+
+
             </div>
 
+            {edit && (
+                <div className='absolute flex justify-center items-center top-0 left-0 w-full h-full bg-black/30 '>
+                        <ProjectDetails project={details} onClose={setEdit} />
+                    </div>
 
-
+            )}
 
 
         </div>
