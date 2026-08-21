@@ -1,6 +1,16 @@
 import React from 'react'
+import { useState } from 'react'
 
 const ProjectDetails = ({ project, onClose }) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleShowImage = (image) => {
+    setSelectedProject(image);
+  };
+
+  const handleCloseImage = () => {
+    setSelectedProject(null);
+  };
   return (
     <div className='fixed flex justify-center items-center bg-black/50 inset-0 w-screen h-screen top-0 left-0 p-4 z-50'>
       <div className="w-full max-w-5xl h-[90vh] bg-[#0F172A] rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
@@ -9,14 +19,14 @@ const ProjectDetails = ({ project, onClose }) => {
         <div className="flex items-center justify-between px-8 py-6 border-b border-white/10">
           <div>
             <h2 className="text-md md:text-3xl font-bold text-white">
-             {project.title}
+              {project.title}
             </h2>
             <p className="text-slate-400 mt-1">
               {project.role}
             </p>
           </div>
 
-          <button className="text-slate-400 hover:text-white text-2xl" onClick={()=> onClose()}>
+          <button className="text-slate-400 hover:text-white text-2xl" onClick={() => onClose()}>
             ✕
           </button>
         </div>
@@ -26,18 +36,19 @@ const ProjectDetails = ({ project, onClose }) => {
 
           {/* Hero */}
           <img
-             src={project.thumbnail}
+            src={project.thumbnail}
             alt={project.title}
+            onClick={() => handleShowImage(project.thumbnail)}
             loading='lazy'
             className="w-full h-72 object-cover rounded-2xl"
           />
 
           {/* Stack */}
           <div className="flex flex-wrap gap-3">
-            {project.stack.map((tech)=>(
-              <span  key={tech} className="px-4 py-2 rounded-full bg-sky-500/20 text-sky-300">
-              {tech}
-            </span>
+            {project.stack.map((tech) => (
+              <span key={tech} className="px-4 py-2 rounded-full bg-sky-500/20 text-sky-300">
+                {tech}
+              </span>
 
             ))}
 
@@ -66,10 +77,10 @@ const ProjectDetails = ({ project, onClose }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-              {project.features.map((feature)=>(
+              {project.features.map((feature) => (
                 <div key={feature} className="bg-slate-800 flex items-center gap-2 rounded-xl p-4">
-                <span className='bg-sky-400 w-4 h-4 rounded-full block'></span> {feature}
-              </div>
+                  <span className='bg-sky-400 w-4 h-4 rounded-full block'></span> {feature}
+                </div>
               ))}
 
             </div>
@@ -85,13 +96,13 @@ const ProjectDetails = ({ project, onClose }) => {
 
             <div className="bg-slate-800 rounded-2xl p-6">
 
-              {project.challenges.map((challenge)=>(
-                 <p className="text-slate-300">
-                {challenge}
-              </p>
+              {project.challenges.map((challenge) => (
+                <p className="text-slate-300">
+                  {challenge}
+                </p>
               ))}
 
-             
+
 
             </div>
 
@@ -105,12 +116,12 @@ const ProjectDetails = ({ project, onClose }) => {
             </h3>
 
             <div className="bg-slate-800 rounded-2xl p-6">
-              {project.learned.map((learn)=>(
-                  <p className="text-slate-300">
-                {learn}
-              </p>
+              {project.learned.map((learn) => (
+                <p className="text-slate-300">
+                  {learn}
+                </p>
               ))}
-              
+
 
             </div>
 
@@ -124,14 +135,15 @@ const ProjectDetails = ({ project, onClose }) => {
             </h3>
 
             <div className="grid grid-cols-4 gap-4">
-              {project.images.map((image,index)=>(
-                 <img
-                key={index}
-                alt={project.title + index}
-                src={image}
-                loading='lazy'
-                className="rounded-xl cursor-pointer hover:scale-105 transition"
-              />
+              {project.images.map((image, index) => (
+                <img
+                  key={index}
+                  alt={project.title + index}
+                  src={image}
+                  onClick={() => handleShowImage(image)}
+                  loading='lazy'
+                  className="rounded-xl cursor-pointer hover:scale-105 transition"
+                />
               ))}
 
             </div>
@@ -160,6 +172,29 @@ const ProjectDetails = ({ project, onClose }) => {
         </div>
 
       </div>
+
+
+      {selectedProject && (
+        <div
+          className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6"
+          onClick={handleCloseImage}
+        >
+          <img
+            src={selectedProject}
+            alt={project.title}
+            className="max-w-[95%] max-h-[90%] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            type="button"
+            className="absolute top-5 right-5 text-white text-4xl hover:text-sky-400 transition"
+            onClick={handleCloseImage}
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
   )
 }

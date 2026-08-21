@@ -60,19 +60,19 @@ const Projects = ({ setSection }) => {
 
                 <button
                     onClick={() => setSection("addProject")}
-                    className='bg-[#3B82F6] text-sm md:text-lg  p-2 md:px-3 md:py-2 rounded'>
+                    className='bg-[#3B82F6] text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 rounded'>
                     <p className='font-semibold '>Add Project</p>
                 </button>
             </div>
 
             <div className='flex justify-between p-4'>
                 <div className='flex gap-2 '>
-                    <button className='p-3 text-sm md:text-md font-semibold bg-[#3B82F6] rounded border border-[#1E293B]'>All <span>(12)</span></button>
-                    <button className='p-3 font-semibold text-sm md:text-md  rounded border border-[#1E293B]'>Published <span>(12)</span></button>
-                    <button className='p-3 font-semibold text-sm md:text-md  rounded border border-[#1E293B]'>Draft <span>(12)</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 bg-[#3B82F6] rounded '>All <span>(12)</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1   rounded border border-[#1E293B]'>Published <span>(12)</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 rounded border border-[#1E293B]'>Draft <span>(12)</span></button>
                 </div>
                 <div className='hidden md:block'>
-                    <select className='border p-3 border-[#1E293B] rounded text-[#F8FAFC]'>
+                    <select className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 border border-[#1E293B] rounded  text-[#F8FAFC]'>
                         <option>ALL Categories</option>
                     </select>
                 </div>

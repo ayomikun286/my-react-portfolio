@@ -262,9 +262,9 @@ const Add_Project = ({ setSection }) => {
 
       <div className="flex mt-3 items-center gap-3 font-semibold text-sm md:text-lg">
 
-        <span 
-        onClick={()=> setSection('project')}
-        className="text-[#3B82F6] block cursor-pointer ">
+        <span
+          onClick={() => setSection('project')}
+          className="text-[#3B82F6] block cursor-pointer ">
           Project
         </span>
 
@@ -498,7 +498,177 @@ const Add_Project = ({ setSection }) => {
 
 
 
-          {/* CHALLENGES */}
+
+
+         
+
+
+
+        </div>
+
+
+
+        {/* =========================
+            RIGHT SIDE  
+        ========================== */}
+
+        <div className="w-full flex flex-col gap-3 md:max-w-180">
+
+          <div className="border flex flex-col gap-5 p-5 bg-[#0B1422] border-[#1E293B] rounded-2xl ">
+
+
+            {/* THUMBNAIL */}
+
+            <label>
+
+              <p className="font-semibold">
+                Project Thumbnail
+                <span className="text-red-500"> *</span>
+              </p>
+
+              <input
+                type="file"
+                name="thumbnail"
+                accept="image/*"
+                required
+                onChange={handleThumbnail}
+                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md text-sm"
+              />
+
+            </label>
+
+
+            
+
+
+            <div className="mt-4">
+              {thumbnailPreview ? (
+                <div className="relative mt-4 rounded-lg overflow-hidden border border-[#1E293B]">
+                  <img
+                    src={thumbnailPreview}
+                    alt="Thumbnail preview"
+                    className="w-full h-40 object-cover"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={removeThumbnail}
+                    className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full font-bold"
+                  >
+                    ×
+                  </button>
+
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-xs px-3 py-2">
+                    Thumbnail Preview
+                  </div>
+                </div>
+              ) : (
+                <div className="h-40 border border-dashed border-[#1E293B] rounded-lg bg-[#050B14] flex flex-col items-center justify-center text-gray-500">
+
+                  <span className="text-3xl mb-2">
+                    🖼️
+                  </span>
+
+                  <p className="text-sm">
+                    No project media selected
+                  </p>
+
+                  <p className="text-xs text-gray-600 mt-1">
+                    Images  will appear here
+                  </p>
+
+                </div>
+              )}
+            </div>
+
+
+
+            {/* PROJECT IMAGES */}
+
+            <label>
+
+              <p className="font-semibold">
+                Project Images
+              </p>
+
+              <input
+                type="file"
+                name="images"
+                accept="image/*,video/*"
+                multiple
+                onChange={handleImages}
+                className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md text-sm"
+              />
+
+              <small className="text-gray-500">
+                Select multiple images or videos
+              </small>
+            </label>
+
+            <div className="mt-4">
+              {imagePreviews.length > 0 ? (
+                <div className="grid grid-cols-2 gap-3">
+                  {imagePreviews.map((media, index) => (
+                    <div
+                      key={index}
+                      className="relative group border border-[#1E293B] rounded-lg overflow-hidden bg-[#050B14]"
+                    >
+                      {media.type === "image" ? (
+                        <img
+                          src={media.url}
+                          alt={`Project ${index + 1}`}
+                          className="w-full h-28 object-cover"
+                        />
+                      ) : (
+                        <video
+                          src={media.url}
+                          controls
+                          className="w-full h-28 object-cover"
+                        />
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => removeImage(index)}
+                        className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-7 h-7 rounded-full font-bold"
+                      >
+                        ×
+                      </button>
+
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-xs text-white px-2 py-1">
+                        {media.type === "image" ? "Image" : "Video"} {index + 1}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="h-40 border border-dashed border-[#1E293B] rounded-lg bg-[#050B14] flex flex-col items-center justify-center text-gray-500">
+
+                  <span className="text-3xl mb-2">
+                    🖼️
+                  </span>
+
+                  <p className="text-sm">
+                    No project media selected
+                  </p>
+
+                  <p className="text-xs text-gray-600 mt-1">
+                    Images and videos will appear here
+                  </p>
+
+                </div>
+              )}
+            </div>
+
+
+
+         
+
+          </div>
+          <div className="border flex flex-col gap-5 p-5 bg-[#0B1422] border-[#1E293B] rounded-2xl w-full">
+
+
+                     {/* CHALLENGES */}
 
           <label>
 
@@ -539,10 +709,9 @@ const Add_Project = ({ setSection }) => {
           </label>
 
 
+             {/* LINKS */}
 
-          {/* LINKS */}
-
-          <div className="flex gap-3 flex-col md:flex-row">
+          <div className="flex gap-3 flex-col ">
 
             <label className="w-full">
 
@@ -580,230 +749,54 @@ const Add_Project = ({ setSection }) => {
 
             </label>
 
-          </div>
 
+               {/* FEATURED */}
 
+            <label className="flex items-center gap-3 cursor-pointer">
 
-        </div>
-
-
-
-        {/* =========================
-            RIGHT SIDE
-        ========================== */}
-
-        <div className="border flex flex-col gap-5 p-5 bg-[#0B1422] border-[#1E293B] rounded-2xl w-full md:max-w-90">
-
-
-          {/* THUMBNAIL */}
-
-          <label>
-
-            <p className="font-semibold">
-              Project Thumbnail
-              <span className="text-red-500"> *</span>
-            </p>
-
-            <input
-              type="file"
-              name="thumbnail"
-              accept="image/*"
-              required
-              onChange={handleThumbnail}
-              className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md text-sm"
-            />
-
-          </label>
-
-
-          {/* {thumbnailPreview && (
-            <div className="relative mt-4 rounded-lg overflow-hidden border border-[#1E293B]">
-              <img
-                src={thumbnailPreview}
-                alt="Thumbnail preview"
-                className="w-full h-40 object-cover"
+              <input
+                type="checkbox"
+                name="featured"
+                checked={formData.featured}
+                onChange={handleChange}
+                className="w-4 h-4"
               />
 
-              <button
-                type="button"
-                onClick={removeThumbnail}
-                className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full font-bold"
-              >
-                ×
-              </button>
+              <span className="font-semibold">
+                Featured Project
+              </span>
 
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-xs px-3 py-2">
-                Thumbnail Preview
-              </div>
-            </div>
-          )} */}
+            </label>
 
 
-          <div className="mt-4">
-            {thumbnailPreview ? (
-              <div className="relative mt-4 rounded-lg overflow-hidden border border-[#1E293B]">
-                <img
-                  src={thumbnailPreview}
-                  alt="Thumbnail preview"
-                  className="w-full h-40 object-cover"
-                />
 
-                <button
-                  type="button"
-                  onClick={removeThumbnail}
-                  className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-8 h-8 rounded-full font-bold"
-                >
-                  ×
-                </button>
+            {/* SUBMIT */}
 
-                <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-xs px-3 py-2">
-                  Thumbnail Preview
-                </div>
-              </div>
-            ) : (
-              <div className="h-40 border border-dashed border-[#1E293B] rounded-lg bg-[#050B14] flex flex-col items-center justify-center text-gray-500">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-50 p-3 rounded-lg font-semibold transition"
+            >
 
-                <span className="text-3xl mb-2">
-                  🖼️
-                </span>
+              {loading ? "Creating Project..." : "Create Project"}
 
-                <p className="text-sm">
-                  No project media selected
-                </p>
+            </button>
 
-                <p className="text-xs text-gray-600 mt-1">
-                  Images  will appear here
-                </p>
 
-              </div>
+
+            {/* MESSAGE */}
+
+            {message && (
+
+              <p className="text-sm text-center text-gray-300">
+                {message}
+              </p>
+
             )}
+
           </div>
 
-
-
-          {/* PROJECT IMAGES */}
-
-          <label>
-
-            <p className="font-semibold">
-              Project Images
-            </p>
-
-            <input
-              type="file"
-              name="images"
-              accept="image/*,video/*"
-              multiple
-              onChange={handleImages}
-              className="border border-[#1E293B] bg-[#050B14] w-full p-2 mt-3 rounded-md text-sm"
-            />
-
-            <small className="text-gray-500">
-              Select multiple images or videos
-            </small>
-          </label>
-
-          <div className="mt-4">
-            {imagePreviews.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3">
-                {imagePreviews.map((media, index) => (
-                  <div
-                    key={index}
-                    className="relative group border border-[#1E293B] rounded-lg overflow-hidden bg-[#050B14]"
-                  >
-                    {media.type === "image" ? (
-                      <img
-                        src={media.url}
-                        alt={`Project ${index + 1}`}
-                        className="w-full h-28 object-cover"
-                      />
-                    ) : (
-                      <video
-                        src={media.url}
-                        controls
-                        className="w-full h-28 object-cover"
-                      />
-                    )}
-
-                    <button
-                      type="button"
-                      onClick={() => removeImage(index)}
-                      className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white w-7 h-7 rounded-full font-bold"
-                    >
-                      ×
-                    </button>
-
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-xs text-white px-2 py-1">
-                      {media.type === "image" ? "Image" : "Video"} {index + 1}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="h-40 border border-dashed border-[#1E293B] rounded-lg bg-[#050B14] flex flex-col items-center justify-center text-gray-500">
-
-                <span className="text-3xl mb-2">
-                  🖼️
-                </span>
-
-                <p className="text-sm">
-                  No project media selected
-                </p>
-
-                <p className="text-xs text-gray-600 mt-1">
-                  Images and videos will appear here
-                </p>
-
-              </div>
-            )}
           </div>
-
-
-
-          {/* FEATURED */}
-
-          <label className="flex items-center gap-3 cursor-pointer">
-
-            <input
-              type="checkbox"
-              name="featured"
-              checked={formData.featured}
-              onChange={handleChange}
-              className="w-4 h-4"
-            />
-
-            <span className="font-semibold">
-              Featured Project
-            </span>
-
-          </label>
-
-
-
-          {/* SUBMIT */}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-[#3B82F6] hover:bg-[#2563EB] disabled:opacity-50 p-3 rounded-lg font-semibold transition"
-          >
-
-            {loading ? "Creating Project..." : "Create Project"}
-
-          </button>
-
-
-
-          {/* MESSAGE */}
-
-          {message && (
-
-            <p className="text-sm text-center text-gray-300">
-              {message}
-            </p>
-
-          )}
-
         </div>
 
       </form>
