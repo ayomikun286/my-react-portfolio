@@ -1057,7 +1057,7 @@ const Edit_Project = ({ project, setSection }) => {
 
                             <button
                                 type="button"
-                                onClick={() => setSection("project")}
+                                onClick={() => setSection(false)}
                                 disabled={loading}
                                 className="w-full border border-[#1E293B] hover:bg-[#111C2D] disabled:opacity-50 p-3 rounded-lg font-semibold transition"
                             >

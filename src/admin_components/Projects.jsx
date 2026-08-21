@@ -14,7 +14,7 @@ const Projects = ({ setSection }) => {
     const [view, setView] = useState(false)
     const [projects, setProjects] = useState([]);
     const [details, setDetails] =useState([]);
-    const [selectPro, setSelectPro] = useState("")
+    const [selectPro, setSelectPro] = useState([])
     const [loader, setLoader] = useState(true)
 
 
@@ -183,7 +183,7 @@ const Projects = ({ setSection }) => {
                                         <button
                                             className="p-2 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition"
                                             title="Edit project"
-                                            onClick={()=> handleEdit(project._id)}
+                                            onClick={()=> handleEdit(project)}
                                         >
                                             <FaEdit />
                                         </button>
@@ -230,7 +230,7 @@ const Projects = ({ setSection }) => {
 
             {edit && (
                 <div className='absolute flex justify-center items-start top-0 left-0 w-full h-full bg-black/30 '>
-                        <Edit_Project project={details} setSection={setEdit} />
+                        <Edit_Project project={selectPro} setSection={setEdit} />
                     </div>
                 
             )}
