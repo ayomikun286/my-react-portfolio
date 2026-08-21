@@ -174,7 +174,7 @@ const Projects = ({ setSection }) => {
                                         <button
                                             className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 transition"
                                             title="View project"
-                                            onClick={()=>{ handleView(project._id)}}
+                                            onClick={()=>{ handleView(project)}}
                                         >
                                             <FaEye />
                                         </button>
@@ -183,7 +183,7 @@ const Projects = ({ setSection }) => {
                                         <button
                                             className="p-2 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition"
                                             title="Edit project"
-                                            onClick={()=> handleEdit(project)}
+                                            onClick={()=> handleEdit(project._id)}
                                         >
                                             <FaEdit />
                                         </button>
@@ -229,8 +229,8 @@ const Projects = ({ setSection }) => {
 
 
             {edit && (
-                <div className='absolute flex justify-center items-center top-0 left-0 w-full h-full bg-black/30 '>
-                        <Edit_Project project={details} onClose={setEdit} />
+                <div className='absolute flex justify-center items-start top-0 left-0 w-full h-full bg-black/30 '>
+                        <Edit_Project project={details} setSection={setEdit} />
                     </div>
                 
             )}

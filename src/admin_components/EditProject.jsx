@@ -351,7 +351,7 @@ const Edit_Project = ({ project, setSection }) => {
 
             // Go back to projects
             setTimeout(() => {
-                setSection("project");
+                setSection(false);
             }, 1200);
 
         } catch (error) {
@@ -385,7 +385,7 @@ const Edit_Project = ({ project, setSection }) => {
                 </p>
 
                 <button
-                    onClick={() => setSection("project")}
+                    onClick={() => setSection(false)}
                     className="mt-4 bg-[#3B82F6] px-4 py-2 rounded-lg"
                 >
                     Back to Projects
@@ -400,14 +400,14 @@ const Edit_Project = ({ project, setSection }) => {
     // =========================================================
 
     return (
-        <div className="relative">
+        <div className="relative bg-[#050B14] w-full">
 
             {/* HEADER */}
 
-            <div className="flex mt-3 items-center gap-3 font-semibold text-sm md:text-lg">
+            <div className="flex mt-3 items-center gap-3 font-semibold text-sm md:text-lg ">
 
                 <span
-                    onClick={() => setSection("project")}
+                    onClick={() => setSection(false)}
                     className="text-[#3B82F6] block cursor-pointer"
                 >
                     Project
