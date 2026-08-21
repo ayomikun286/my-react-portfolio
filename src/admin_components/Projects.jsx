@@ -8,10 +8,13 @@ import { API_URL } from '../config.js';
 import ProjectDetails from "../admin_components/ProjectDetails.jsx"
 import { getProjects } from "../data/ProjectsRoute.js";
 import Loading from "./Landing.jsx"
+import Edit_Project from "./EditProject.jsx"
 const Projects = ({ setSection }) => {
-    const [edit, setEdit] = useState(false)
+    const [edit, setEdit] = useState(false);
+    const [view, setView] = useState(false)
     const [projects, setProjects] = useState([]);
-    const [details, setDetails] =useState([])
+    const [details, setDetails] =useState([]);
+    const [selectPro, setSelectPro] = useState("")
     const [loader, setLoader] = useState(true)
 
 
@@ -32,9 +35,14 @@ const Projects = ({ setSection }) => {
 
 
 
-   const handleEdit =(project) =>{
-    setEdit(true)
+   const handleView =(project) =>{
+    setView(true)
     setDetails(project)
+   }
+
+    const handleEdit =(project) =>{
+    setEdit(true)
+    setSelectPro(project)
    }
 
     const handleDelete = async (projectId) => {
@@ -79,9 +87,9 @@ const Projects = ({ setSection }) => {
 
             <div className='flex justify-between p-4'>
                 <div className='flex gap-2 '>
-                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 bg-[#3B82F6] rounded '>All <span>(12)</span></button>
-                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1   rounded border border-[#1E293B]'>Published <span>(12)</span></button>
-                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 rounded border border-[#1E293B]'>Draft <span>(12)</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 bg-[#3B82F6] rounded '>All <span>({projects.length})</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1   rounded border border-[#1E293B]'>Published <span>({projects.length})</span></button>
+                    <button className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 rounded border border-[#1E293B]'>Draft <span>(0)</span></button>
                 </div>
                 <div className='hidden md:block'>
                     <select className='text-sm md:text-md  p-2 md:px-2 h-10 md:py-1 border border-[#1E293B] rounded  text-[#F8FAFC]'>
@@ -166,6 +174,7 @@ const Projects = ({ setSection }) => {
                                         <button
                                             className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700 transition"
                                             title="View project"
+                                            onClick={()=>{ handleView(project._id)}}
                                         >
                                             <FaEye />
                                         </button>
@@ -211,11 +220,19 @@ const Projects = ({ setSection }) => {
 
             </div>
 
-            {edit && (
+            {view && (
                 <div className='absolute flex justify-center items-center top-0 left-0 w-full h-full bg-black/30 '>
-                        <ProjectDetails project={details} onClose={setEdit} />
+                        <ProjectDetails project={details} onClose={setView} />
                     </div>
 
+            )}
+
+
+            {edit && (
+                <div className='absolute flex justify-center items-center top-0 left-0 w-full h-full bg-black/30 '>
+                        <Edit_Project project={details} onClose={setEdit} />
+                    </div>
+                
             )}
 
 
